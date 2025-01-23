@@ -15,16 +15,16 @@ int main() {
     int a = (rand() % 9) + 1;
     int b = (rand() % 9) + 1;
     int ans;
-    printf("\n\n%d + %d = ? ", a, b);
+    printf("\n%d + %d = ? ", a, b);
     scanf("%d", &ans);
     if (ans == a + b) {
       sum++;
-      printf("Correct!");
+      printf("Correct!\n");
     }
     else {
-      printf("Incorrect :(");
+      printf("Incorrect :(\n");
     }
   }
-  printf("You answered %d/%d correctly.", sum, num);
+  printf("You answered %d/%d correctly.\n", sum, num);
   return 0;
 }
