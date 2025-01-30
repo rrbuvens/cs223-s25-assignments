@@ -1,6 +1,7 @@
 /***************************************************
  * Author: Reagan Buvens
- * 
+ * Program takes in a password and returns a version in which some letters have been
+ * replaced with similar-looking numbers.
  */
 #include <stdio.h>
 #include <string.h>
