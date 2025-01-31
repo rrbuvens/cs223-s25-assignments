@@ -1,5 +1,6 @@
 /***************************************************
  * Author: Reagan Buvens
+ * Date: 01/31/2025
  * Creates and stores a list of snacks, allowing the user to input an amount of money
  * and request a snack. Responds according to the snack.
  */

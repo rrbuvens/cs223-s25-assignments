@@ -1,5 +1,6 @@
 /***************************************************
  * Author: Reagan Buvens
+ * Date: 01/31/2025
  * Program takes in a password and returns a version in which some letters have been
  * replaced with similar-looking numbers.
  */
@@ -8,8 +9,10 @@
 
 int main() {
   char pwrd[2048];
+
   printf("Enter a word: ");
   scanf("%s", pwrd);
+
   for (int i = 0; i < strlen(pwrd); i++) {
     if (pwrd[i] == 'e') {
       pwrd[i] = '3';
@@ -21,6 +24,8 @@ int main() {
       pwrd[i] = '@';
     }
   }
+
   printf("Your bad password is %s\n", pwrd);
+  
   return 0;
 }
