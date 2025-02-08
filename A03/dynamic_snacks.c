@@ -27,18 +27,12 @@ int main() {
   }
 
   for (int i = 0; i < num; i++) {
-    float price;
-    int amount;
-
     printf("Enter a name: ");
     scanf("%s", snacks[i].name);
     printf("Enter a price: ");
-    scanf("%f", &price);
+    scanf("%f", &snacks[i].price);
     printf("Enter an amount: ");
-    scanf("%d", &amount);
-
-    snacks[i].price = price;
-    snacks[i].amount = amount;
+    scanf("%d", &snacks[i].amount);
   }
 
   printf("Welcome to Dynamic Donna's Snack Bar.\n\n");
