@@ -1,4 +1,4 @@
-/*
+/**
  * Name: Reagan Buvens
  * Date: 02/28/2025
  * Description: Given an input file, checks that all braces are matched.
