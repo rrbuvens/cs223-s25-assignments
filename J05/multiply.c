@@ -3,10 +3,25 @@
 #include <sys/time.h>
 #include <stdlib.h>
 #include <pthread.h>
-
 #define SIZE 100
-
 // your code here
+struct thread_args {
+  int *m;
+  int *u;
+  int start;
+  int end;
+  int* product;
+};
+
+void* thread_multiply(void* arg) {
+  struct thread_args* data = (struct thread_args*) arg;
+  for (int i = data->start; i < data->end; i++) {
+    for (int j = 0; j < 100; j++) {
+      data->product[i] += data->u[j] * data->m[i * 100 + j]; 
+    }
+  }
+  return NULL;
+}
 
 int main(int argc, char *argv[]) {
   srand(time(0));
@@ -15,10 +30,11 @@ int main(int argc, char *argv[]) {
   int u[SIZE];
   int result[SIZE];
   int result_threads[SIZE];
-   
+
   for (int i = 0; i < SIZE; i++) {
     u[i] = rand() % 10 - 5;
     result[i] = 0;
+    result_threads[i] = 0;
   }
 
   for (int i = 0; i < SIZE; i++) {
@@ -31,14 +47,31 @@ int main(int argc, char *argv[]) {
 
   // TODO: Implement your thread solution here
   printf("Test with 4 threads\n");
+  pthread_t threads[4];
+  struct thread_args args[4];
 
+  for (int i = 0; i < 4; i++) {
+    args[i].start = i * 25;
+    args[i].end = (i == 4 - 1) ? SIZE : (i + 1) * 25;
+    args[i].m = M;
+    args[i].u = u;
+    args[i].product = result_threads;
+    pthread_create(&threads[i], NULL, thread_multiply, (void *) &args[i]);
+  }
 
+  for (int i = 0; i < 4; i++) {
+    pthread_join(threads[i], NULL);
+    // product += args[i].product;
+    for (int j = i * 250; j < (i+1)*250; j++) {
+      result_threads[j] = args[i].product[j];
+    }
+  }
 
   int error = 0;
   for (int i = 0; i < SIZE; i++) {
     error += abs(result[i] - result_threads[i]);
   }
-  printf("Error between ground truth and multithreaded version: %d\n", error);
 
+  printf("Error between ground truth and multithreaded version: %d\n", error);
   return 0;
 }
