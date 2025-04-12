@@ -1,3 +1,10 @@
+/**
+ * Name: Reagan Buvens
+ * Date: 04/11/2025
+ * Description: Implements a program which takes a ppm image and make the brightest parts
+ * appear to glow.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -8,7 +15,6 @@
 #include "write_ppm.h"
 
 int main(int argc, char* argv[]) {
-  // todo: your code here
   int w;
   int h;
   struct ppm_pixel **orig = read_ppm_2d("earth-small.ppm", &w, &h);
@@ -52,7 +58,7 @@ int main(int argc, char* argv[]) {
       blur[i][j].red = (unsigned char) (red/25);
       blur[i][j].green = (unsigned char) (green/25);
       blur[i][j].blue = (unsigned char) (blue/25);
-      
+
       int r = orig[i][j].red + blur[i][j].red;
       orig[i][j].red = r > 255 ? 255 : r;
       int g = orig[i][j].green + blur[i][j].green;

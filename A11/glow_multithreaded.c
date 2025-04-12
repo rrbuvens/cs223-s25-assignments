@@ -1,3 +1,10 @@
+/**
+ * Name: Reagan Buvens
+ * Date: 04/11/2025
+ * Description: Implements a multi-threaded program which takes a ppm image and
+ * makes the brightest parts appear to glow.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
